@@ -1,0 +1,16 @@
+---
+name: Push Policyfile to Chef Server
+
+on:
+  workflow_run:
+    workflows: [test]
+    types: completed
+    branches: main
+
+jobs:
+  chef-push:
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    uses: acep-devops/cookbook-ci/.github/workflows/policyfile-ci.yml@main
+    with:
+      policy_group: "dev"
+    secrets: inherit

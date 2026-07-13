@@ -1,0 +1,38 @@
+---
+driver:
+  name: dokken
+  privileged: true  # allows systemd services to start
+
+provisioner:
+  name: dokken
+
+transport:
+  name: dokken
+
+verifier:
+  name: inspec
+
+platforms:
+  # @see https://github.com/chef-cookbooks/testing_examples/blob/main/kitchen.dokken.yml
+  # @see https://hub.docker.com/u/dokken
+  - name: debian-12
+    driver:
+      image: dokken/debian-12
+      pid_one_command: /bin/systemd
+      intermediate_instructions:
+        - RUN /usr/bin/apt-get update
+  - name: ubuntu-24.04
+    driver:
+      image: dokken/ubuntu-24.04
+      pid_one_command: /bin/systemd
+      intermediate_instructions:
+        - RUN /usr/bin/apt-get update
+
+suites:
+  - name: default
+    run_list:
+      - recipe[acep-acme::default]
+    verifier:
+      inspec_tests:
+        - test/integration/default
+    attributes:
