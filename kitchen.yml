@@ -5,6 +5,7 @@ driver:
 
 provisioner:
   name: dokken
+  clean_dokken_sandbox: false
 
 transport:
   name: dokken
@@ -30,9 +31,9 @@ platforms:
 
 suites:
   - name: default
-    run_list:
-      - recipe[acep-acme::default]
     verifier:
       inspec_tests:
         - test/integration/default
     attributes:
+    provisioner:
+      policyfile: ./policies/default.rb

@@ -1,0 +1,191 @@
+{
+  "revision_id": "cf891fb5a7dd2e7105e239359a9d31e63427a89516d83aef3abccf6fdd784a61",
+  "name": "acep-acme",
+  "run_list": [
+    "recipe[test::pebble]",
+    "recipe[test::default]"
+  ],
+  "included_policy_locks": [
+
+  ],
+  "cookbook_locks": {
+    "acep-acme": {
+      "version": "0.1.0",
+      "identifier": "2a6b8f57083292037788b719ccad0b4e18f90c0e",
+      "dotted_decimal_identifier": "11940212406497938.975854001310893.12430054329358",
+      "source": "..",
+      "cache_key": null,
+      "scm_info": {
+        "scm": "git",
+        "remote": null,
+        "revision": "81dab5d771a6f5585a35fc8575794e9b200356dc",
+        "working_tree_clean": false,
+        "published": false,
+        "synchronized_remote_branches": [
+
+        ]
+      },
+      "source_options": {
+        "path": ".."
+      }
+    },
+    "docker": {
+      "version": "12.0.1",
+      "identifier": "d66596a10ebb83e2e1aae1a99ca08034bdaae4ea",
+      "dotted_decimal_identifier": "60347342637677443.63861468783287456.140964008748266",
+      "cache_key": "docker-12.0.1-supermarket.chef.io",
+      "origin": "https://supermarket.chef.io:443/api/v1/cookbooks/docker/versions/12.0.1/download",
+      "source_options": {
+        "artifactserver": "https://supermarket.chef.io:443/api/v1/cookbooks/docker/versions/12.0.1/download",
+        "version": "12.0.1"
+      }
+    },
+    "golang": {
+      "version": "7.0.0",
+      "identifier": "19e141e6e567a8e9ef3f890c9382674a52c5452d",
+      "dotted_decimal_identifier": "7284547580684200.65846725734863746.113568913900845",
+      "cache_key": "golang-7.0.0-supermarket.chef.io",
+      "origin": "https://supermarket.chef.io:443/api/v1/cookbooks/golang/versions/7.0.0/download",
+      "source_options": {
+        "artifactserver": "https://supermarket.chef.io:443/api/v1/cookbooks/golang/versions/7.0.0/download",
+        "version": "7.0.0"
+      }
+    },
+    "haproxy": {
+      "version": "12.4.14",
+      "identifier": "5fbbaceb0c4d7596c1573791f7c4d9ae8ba977f2",
+      "dotted_decimal_identifier": "26946474139733365.42433826845226948.239343690676210",
+      "cache_key": "haproxy-12.4.14-supermarket.chef.io",
+      "origin": "https://supermarket.chef.io:443/api/v1/cookbooks/haproxy/versions/12.4.14/download",
+      "source_options": {
+        "artifactserver": "https://supermarket.chef.io:443/api/v1/cookbooks/haproxy/versions/12.4.14/download",
+        "version": "12.4.14"
+      }
+    },
+    "hostsfile": {
+      "version": "3.0.1",
+      "identifier": "4054324c36e266a714e89e9a3d160156a30f592d",
+      "dotted_decimal_identifier": "18106973513245286.47029310436556054.1471614507309",
+      "cache_key": "hostsfile-3.0.1-supermarket.chef.io",
+      "origin": "https://supermarket.chef.io:443/api/v1/cookbooks/hostsfile/versions/3.0.1/download",
+      "source_options": {
+        "artifactserver": "https://supermarket.chef.io:443/api/v1/cookbooks/hostsfile/versions/3.0.1/download",
+        "version": "3.0.1"
+      }
+    },
+    "test": {
+      "version": "0.1.0",
+      "identifier": "fcc774594345f5aff6595b135dc58edfb532b0ee",
+      "dotted_decimal_identifier": "71150996658800117.49528984564882885.157091468849390",
+      "source": "../test/cookbooks/test",
+      "cache_key": null,
+      "scm_info": {
+        "scm": "git",
+        "remote": null,
+        "revision": "81dab5d771a6f5585a35fc8575794e9b200356dc",
+        "working_tree_clean": false,
+        "published": false,
+        "synchronized_remote_branches": [
+
+        ]
+      },
+      "source_options": {
+        "path": "../test/cookbooks/test"
+      }
+    },
+    "yum-epel": {
+      "version": "6.0.0",
+      "identifier": "cf77821fcdf9dd54edf30a9fd61ef90fbef3d8c3",
+      "dotted_decimal_identifier": "58396720942152157.23905526154778142.273846023477443",
+      "cache_key": "yum-epel-6.0.0-supermarket.chef.io",
+      "origin": "https://supermarket.chef.io:443/api/v1/cookbooks/yum-epel/versions/6.0.0/download",
+      "source_options": {
+        "artifactserver": "https://supermarket.chef.io:443/api/v1/cookbooks/yum-epel/versions/6.0.0/download",
+        "version": "6.0.0"
+      }
+    }
+  },
+  "default_attributes": {
+
+  },
+  "override_attributes": {
+
+  },
+  "solution_dependencies": {
+    "Policyfile": [
+      [
+        "acep-acme",
+        ">= 0.0.0"
+      ],
+      [
+        "docker",
+        "= 12.0.1"
+      ],
+      [
+        "golang",
+        "= 7.0.0"
+      ],
+      [
+        "haproxy",
+        "= 12.4.14"
+      ],
+      [
+        "hostsfile",
+        "= 3.0.1"
+      ],
+      [
+        "test",
+        ">= 0.0.0"
+      ],
+      [
+        "yum-epel",
+        "= 6.0.0"
+      ]
+    ],
+    "dependencies": {
+      "acep-acme (0.1.0)": [
+
+      ],
+      "docker (12.0.1)": [
+
+      ],
+      "golang (7.0.0)": [
+
+      ],
+      "haproxy (12.4.14)": [
+        [
+          "yum-epel",
+          ">= 0.0.0"
+        ]
+      ],
+      "hostsfile (3.0.1)": [
+
+      ],
+      "test (0.1.0)": [
+        [
+          "docker",
+          ">= 0.0.0"
+        ],
+        [
+          "golang",
+          ">= 0.0.0"
+        ],
+        [
+          "haproxy",
+          ">= 0.0.0"
+        ],
+        [
+          "hostsfile",
+          ">= 0.0.0"
+        ],
+        [
+          "acep-acme",
+          ">= 0.0.0"
+        ]
+      ],
+      "yum-epel (6.0.0)": [
+
+      ]
+    }
+  }
+}
