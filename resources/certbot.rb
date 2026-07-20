@@ -1,7 +1,6 @@
 # To learn more about Custom Resources, see https://docs.chef.io/custom_resources/
 resource_name :certbot
 provides :certbot
-unified_mode true
 
 property :domains, [String, Array], name_property: true, coerce: proc { |x| [x].flatten }
 property :cert_name, String
@@ -17,41 +16,8 @@ property :deploy_hook, String
 property :extra_args, Array, default: []
 
 action :run do
-  # Build the certbot CLI command
-  cmd = [
-    'certbot', 'certonly',
-    '--non-interactive',
-    '--agree-tos',
-    '--keep-until-expiring',
-    "--email #{new_resource.email}",
-    "--authenticator #{new_resource.authenticator}"
-  ]
-
-  if new_resource.cert_name
-    cmd << "--cert-name #{new_resource.cert_name}"
-  else
-    cmd << "--cert-name #{new_resource.domains.first}"
-  end
-
-  new_resource.domains.each do |domain|
-    cmd << "-d #{domain}"
-  end
-
-  # Append webroot path if using webroot authenticator
-  if new_resource.authenticator == 'webroot'
-    raise 'webroot_path property is required when using webroot authenticator' unless new_resource.webroot_path
-    cmd << "-w #{new_resource.webroot_path}"
-  end
-
-  cmd << "--pre-hook '#{new_resource.pre_hook}'" if new_resource.pre_hook
-  cmd << "--post-hook '#{new_resource.post_hook}'" if new_resource.post_hook
-  cmd << "--deploy-hook '#{new_resource.deploy_hook}'" if new_resource.deploy_hook
-
-  # Specify the custom ACME server
-  cmd << "--server #{new_resource.acme_endpoint}"
-
-  # Append any additional arguments provided
-  cmd += new_resource.extra_args unless new_resource.extra_args.empty?
+  cmd = ['certbot', 'certonly']
+  cmd.append certbot_opts(new_resource)
 
   # Ensure the requests library trusts a custom CA if specified
   cmd_env = {}
@@ -59,13 +25,21 @@ action :run do
     cmd_env['REQUESTS_CA_BUNDLE'] = new_resource.trusted_ca_bundle
   end
 
-  execute "Generate Certbot certificate for #{new_resource.domains.first}" do
-    command cmd.join(' ')
-    environment cmd_env
-    action :run
+  with_run_context(:root) do
+    declare_resource(:execute, "Generate Certbot certificate for #{new_resource.domains.first}") do
+      command cmd.join(' ')
+      environment cmd_env
+      retries 1
+      retry_delay 30
+      action :nothing
+    end.delayed_action(:run)
   end
 end
 
 action :install do
   package 'certbot'
+end
+
+action_class do
+  include AcepAcme::CertbotHelpers
 end

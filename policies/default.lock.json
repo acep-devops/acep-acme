@@ -1,5 +1,5 @@
 {
-  "revision_id": "cf891fb5a7dd2e7105e239359a9d31e63427a89516d83aef3abccf6fdd784a61",
+  "revision_id": "9b5fc2bb2bd878b5860b2d102c6b3d2d7579aa63dabdf5e937a8254cee88464b",
   "name": "acep-acme",
   "run_list": [
     "recipe[test::pebble]",
@@ -10,15 +10,15 @@
   ],
   "cookbook_locks": {
     "acep-acme": {
-      "version": "0.1.0",
-      "identifier": "2a6b8f57083292037788b719ccad0b4e18f90c0e",
-      "dotted_decimal_identifier": "11940212406497938.975854001310893.12430054329358",
+      "version": "1.0.0",
+      "identifier": "ef02f1c26353f333aadb1cdad1118931a16760fb",
+      "dotted_decimal_identifier": "67275756805510131.14543081870905617.150846254309627",
       "source": "..",
       "cache_key": null,
       "scm_info": {
         "scm": "git",
         "remote": null,
-        "revision": "81dab5d771a6f5585a35fc8575794e9b200356dc",
+        "revision": "e3b0f57b14f3b45078c9979704f034e81bebef98",
         "working_tree_clean": false,
         "published": false,
         "synchronized_remote_branches": [
@@ -75,14 +75,14 @@
     },
     "test": {
       "version": "0.1.0",
-      "identifier": "fcc774594345f5aff6595b135dc58edfb532b0ee",
-      "dotted_decimal_identifier": "71150996658800117.49528984564882885.157091468849390",
+      "identifier": "ecd758e97039e9a2b9fa7684ff35c4ad39466d09",
+      "dotted_decimal_identifier": "66664871377254889.45803431608516405.216248269303049",
       "source": "../test/cookbooks/test",
       "cache_key": null,
       "scm_info": {
         "scm": "git",
         "remote": null,
-        "revision": "81dab5d771a6f5585a35fc8575794e9b200356dc",
+        "revision": "e3b0f57b14f3b45078c9979704f034e81bebef98",
         "working_tree_clean": false,
         "published": false,
         "synchronized_remote_branches": [
@@ -143,7 +143,7 @@
       ]
     ],
     "dependencies": {
-      "acep-acme (0.1.0)": [
+      "acep-acme (1.0.0)": [
 
       ],
       "docker (12.0.1)": [
