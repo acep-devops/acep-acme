@@ -45,7 +45,7 @@ haproxy_config_defaults 'defaults' do
   timeout connect: '5000ms',
           client: '50000ms',
           server: '50000ms'
-  extra_options({
+  extra_options(
     errorfile: [
       '400 /etc/haproxy/errors/400.http',
       '403 /etc/haproxy/errors/403.http',
@@ -54,8 +54,8 @@ haproxy_config_defaults 'defaults' do
       '502 /etc/haproxy/errors/502.http',
       '503 /etc/haproxy/errors/503.http',
       '504 /etc/haproxy/errors/504.http',
-    ],
-  })
+    ]
+  )
   haproxy_retries 3
 end
 
