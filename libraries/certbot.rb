@@ -17,23 +17,23 @@ module AcepAcme
     # def my_helper_method
     #   # help method implementation
     # end
-    def certbot_opts(resource)
+    def certbot_opts
       opts = [
         '--non-interactive',
         '--agree-tos',
         '--keep-until-expiring',
         "--email #{new_resource.email}",
-        "--authenticator #{new_resource.authenticator}"
+        "--authenticator #{new_resource.authenticator}",
       ]
 
-      if new_resource.cert_name
-        opts << "--cert-name #{new_resource.cert_name}"
-      else
-        opts << "--cert-name #{new_resource.domains.first}"
-      end
+      opts << if new_resource.cert_name
+                "--cert-name #{new_resource.cert_name}"
+              else
+                "--cert-name #{new_resource.domains.first}"
+              end
 
       if new_resource.http_01_port
-        opts << "--preferred-challenges http-01"
+        opts << '--preferred-challenges http-01'
         opts << "--http-01-port #{new_resource.http_01_port}"
       end
 

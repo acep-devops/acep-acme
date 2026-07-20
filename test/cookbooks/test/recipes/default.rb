@@ -38,7 +38,6 @@ haproxy_config_global '' do
   chroot '/var/lib/haproxy'
   user 'haproxy'
   group 'haproxy'
-
 end
 
 haproxy_config_defaults 'defaults' do
@@ -46,17 +45,17 @@ haproxy_config_defaults 'defaults' do
   timeout connect: '5000ms',
           client: '50000ms',
           server: '50000ms'
-  extra_options({
+  extra_options(
     errorfile: [
-      "400 /etc/haproxy/errors/400.http",
-      "403 /etc/haproxy/errors/403.http",
-      "408 /etc/haproxy/errors/408.http",
-      "500 /etc/haproxy/errors/500.http",
-      "502 /etc/haproxy/errors/502.http",
-      "503 /etc/haproxy/errors/503.http",
-      "504 /etc/haproxy/errors/504.http"
+      '400 /etc/haproxy/errors/400.http',
+      '403 /etc/haproxy/errors/403.http',
+      '408 /etc/haproxy/errors/408.http',
+      '500 /etc/haproxy/errors/500.http',
+      '502 /etc/haproxy/errors/502.http',
+      '503 /etc/haproxy/errors/503.http',
+      '504 /etc/haproxy/errors/504.http',
     ]
-  })
+  )
   haproxy_retries 3
 end
 
@@ -64,7 +63,7 @@ haproxy_frontend 'http' do
   mode 'http'
   bind '*:80'
   acl [
-    'is_acme path_beg -i /.well-known/acme-challenge/'
+    'is_acme path_beg -i /.well-known/acme-challenge/',
   ]
   extra_options(
     redirect: 'scheme https code 301 unless is_acme '
@@ -96,6 +95,6 @@ certbot 'test.local' do
   email 'uaf-acep-ci@alaska.edu'
   acme_endpoint 'https://127.0.0.1:14000/dir'
   http_01_port 5002
-  deploy_hook "cat $RENEWED_LINEAGE/fullchain.pem $RENEWED_LINEAGE/test.local.pem > /etc/ssl/private/fullchain.pem && (systemctl reload haproxy || true)"
+  deploy_hook 'cat $RENEWED_LINEAGE/fullchain.pem $RENEWED_LINEAGE/test.local.pem > /etc/ssl/private/fullchain.pem && (systemctl reload haproxy || true)'
   action [:install, :run]
 end
