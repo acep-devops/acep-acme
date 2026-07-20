@@ -1,5 +1,5 @@
 {
-  "revision_id": "9b5fc2bb2bd878b5860b2d102c6b3d2d7579aa63dabdf5e937a8254cee88464b",
+  "revision_id": "203b08151717cf12c7e3a627b909998453a85a192dc33dcf512194978639bd20",
   "name": "acep-acme",
   "run_list": [
     "recipe[test::pebble]",
@@ -11,18 +11,18 @@
   "cookbook_locks": {
     "acep-acme": {
       "version": "1.0.0",
-      "identifier": "ef02f1c26353f333aadb1cdad1118931a16760fb",
-      "dotted_decimal_identifier": "67275756805510131.14543081870905617.150846254309627",
+      "identifier": "d26079bd470756e5bc126bba38d9b8d0d584d9d1",
+      "dotted_decimal_identifier": "59215821092095830.64664556969539801.203207074961873",
       "source": "..",
       "cache_key": null,
       "scm_info": {
         "scm": "git",
-        "remote": null,
-        "revision": "e3b0f57b14f3b45078c9979704f034e81bebef98",
+        "remote": "git@github.com:acep-devops/acep-acme.git",
+        "revision": "630cec5a2e871bed43119b8187fe02ebd484b852",
         "working_tree_clean": false,
-        "published": false,
+        "published": true,
         "synchronized_remote_branches": [
-
+          "origin/main"
         ]
       },
       "source_options": {
@@ -81,12 +81,12 @@
       "cache_key": null,
       "scm_info": {
         "scm": "git",
-        "remote": null,
-        "revision": "e3b0f57b14f3b45078c9979704f034e81bebef98",
+        "remote": "git@github.com:acep-devops/acep-acme.git",
+        "revision": "630cec5a2e871bed43119b8187fe02ebd484b852",
         "working_tree_clean": false,
-        "published": false,
+        "published": true,
         "synchronized_remote_branches": [
-
+          "origin/main"
         ]
       },
       "source_options": {

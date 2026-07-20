@@ -1,6 +1,7 @@
 # To learn more about Custom Resources, see https://docs.chef.io/custom_resources/
 resource_name :certbot
 provides :certbot
+unified_mode true
 
 property :domains, [String, Array], name_property: true, coerce: proc { |x| [x].flatten }
 property :cert_name, String
@@ -16,17 +17,20 @@ property :deploy_hook, String
 property :extra_args, Array, default: []
 
 action :run do
-  cmd = ['certbot', 'certonly']
+  cmd = %w(certbot certonly)
   cmd.append certbot_opts(new_resource)
 
   # Ensure the requests library trusts a custom CA if specified
   cmd_env = {}
-  if new_resource.trusted_ca_bundle
+  if property_is_set?(:trusted_ca_bundle)
     cmd_env['REQUESTS_CA_BUNDLE'] = new_resource.trusted_ca_bundle
   end
 
+  # This is so we can ensure we run at the end of the run
+  # Otherwise we can run into issues when running with cookbooks that use the accumulator pattern
+  # like the HAProxy cookbook.
   with_run_context(:root) do
-    declare_resource(:execute, "Generate Certbot certificate for #{new_resource.domains.first}") do
+    execute "Generate Certbot certificate for #{new_resource.domains.first}" do
       command cmd.join(' ')
       environment cmd_env
       retries 1

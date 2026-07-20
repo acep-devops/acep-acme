@@ -65,7 +65,11 @@ end
 
 node.default['acme']['endpoint'] = 'https://localhost:14000/dir'
 
-docker_gateway_ip = node['network']['interfaces']['docker0']['addresses'].find { |addr, data| data['family'] == 'inet' }&.first rescue '172.17.0.1'
+docker_gateway_ip = begin
+                      node['network']['interfaces']['docker0']['addresses'].find { |_addr, data| data['family'] == 'inet' }&.first
+                    rescue
+                      '172.17.0.1'
+                    end
 
 docker_container 'pebble' do
   repo 'ghcr.io/letsencrypt/pebble'
@@ -102,7 +106,7 @@ end
 # Needed for the acme-client gem to continue connecting to pebble;
 # please do NOT do this on production Chef nodes!
 execute 'update Chef trusted certificates store' do
-  command "cat /etc/pebble/certs/pebble.minica.pem >> /opt/chef/embedded/ssl/certs/cacert.pem"
+  command 'cat /etc/pebble/certs/pebble.minica.pem >> /opt/chef/embedded/ssl/certs/cacert.pem'
   not_if 'grep -q "minica root ca" /opt/chef/embedded/ssl/certs/cacert.pem'
 end
 
