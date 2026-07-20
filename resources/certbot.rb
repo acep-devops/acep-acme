@@ -18,7 +18,7 @@ property :extra_args, Array, default: []
 
 action :run do
   cmd = %w(certbot certonly)
-  cmd.append certbot_opts(new_resource)
+  cmd.append certbot_opts
 
   # Ensure the requests library trusts a custom CA if specified
   cmd_env = {}

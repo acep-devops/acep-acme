@@ -17,7 +17,7 @@ module AcepAcme
     # def my_helper_method
     #   # help method implementation
     # end
-    def certbot_opts(_resource)
+    def certbot_opts
       opts = [
         '--non-interactive',
         '--agree-tos',
