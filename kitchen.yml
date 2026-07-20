@@ -22,7 +22,7 @@ platforms:
       pid_one_command: /bin/systemd
       intermediate_instructions:
         - RUN /usr/bin/apt-get update
-  - name: ubuntu-24.04
+  - name: ubuntu-2404
     driver:
       image: dokken/ubuntu-24.04
       pid_one_command: /bin/systemd
