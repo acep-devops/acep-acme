@@ -95,6 +95,6 @@ certbot 'test.local' do
   email 'uaf-acep-ci@alaska.edu'
   acme_endpoint 'https://127.0.0.1:14000/dir'
   http_01_port 5002
-  deploy_hook 'cat $RENEWED_LINEAGE/fullchain.pem $RENEWED_LINEAGE/test.local.pem > /etc/ssl/private/fullchain.pem && (systemctl reload haproxy || true)'
+  deploy_hook 'cat $RENEWED_LINEAGE/fullchain.pem $RENEWED_LINEAGE/privkey.pem > /etc/ssl/private/test.local.pem && (systemctl reload haproxy || true)'
   action [:install, :run]
 end

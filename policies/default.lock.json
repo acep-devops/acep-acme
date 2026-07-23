@@ -1,5 +1,5 @@
 {
-  "revision_id": "203b08151717cf12c7e3a627b909998453a85a192dc33dcf512194978639bd20",
+  "revision_id": "132762bb85b1cc31be1454a43ecc0a1bc4dc7db67bfccf01da4fda4df68eda1e",
   "name": "acep-acme",
   "run_list": [
     "recipe[test::pebble]",
@@ -11,14 +11,14 @@
   "cookbook_locks": {
     "acep-acme": {
       "version": "1.0.0",
-      "identifier": "d26079bd470756e5bc126bba38d9b8d0d584d9d1",
-      "dotted_decimal_identifier": "59215821092095830.64664556969539801.203207074961873",
+      "identifier": "0a5ebd0189a8288a2bb6732699b8a36647717734",
+      "dotted_decimal_identifier": "2918915634735144.38891609402022328.179659680610100",
       "source": "..",
       "cache_key": null,
       "scm_info": {
         "scm": "git",
         "remote": "git@github.com:acep-devops/acep-acme.git",
-        "revision": "630cec5a2e871bed43119b8187fe02ebd484b852",
+        "revision": "e18e03f763e05274c5d0fdc14872f9ff613b99e2",
         "working_tree_clean": false,
         "published": true,
         "synchronized_remote_branches": [
@@ -75,14 +75,14 @@
     },
     "test": {
       "version": "0.1.0",
-      "identifier": "ecd758e97039e9a2b9fa7684ff35c4ad39466d09",
-      "dotted_decimal_identifier": "66664871377254889.45803431608516405.216248269303049",
+      "identifier": "c491c9615c8462add52f9213a3a13fb63100167a",
+      "dotted_decimal_identifier": "55329389543195746.48929571261883297.70051738687098",
       "source": "../test/cookbooks/test",
       "cache_key": null,
       "scm_info": {
         "scm": "git",
         "remote": "git@github.com:acep-devops/acep-acme.git",
-        "revision": "630cec5a2e871bed43119b8187fe02ebd484b852",
+        "revision": "e18e03f763e05274c5d0fdc14872f9ff613b99e2",
         "working_tree_clean": false,
         "published": true,
         "synchronized_remote_branches": [
