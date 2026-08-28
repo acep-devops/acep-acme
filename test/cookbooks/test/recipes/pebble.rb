@@ -89,7 +89,7 @@ docker_container 'pebble' do
     'PEBBLE_VA_ALWAYS_VALID=0',
   ]
 
-  extra_hosts ["test.local:#{docker_gateway_ip}"]
+  extra_hosts ["test.local:#{docker_gateway_ip}", "secondary-test.local:#{docker_gateway_ip}"]
 
   action :run
 end
