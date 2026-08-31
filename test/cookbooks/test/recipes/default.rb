@@ -6,6 +6,8 @@ package 'hatop'
 
 hostsfile_entry '127.0.0.1' do
   hostname 'test.local'
+  aliases  ['secondary-test.local']
+  action   :append
 end
 
 directory '/etc/ssl/private' do
@@ -22,7 +24,7 @@ openssl_x509_certificate '/etc/ssl/private/selfsigned.pem' do
   org_unit 'DevOps'
   country 'US'
   expire 365
-  subject_alt_name ['IP:127.0.0.1', 'DNS:test.local']
+  subject_alt_name ['IP:127.0.0.1', 'DNS:test.local', 'DNS:secondary-test.local']
   not_if { ::File.exist?('/etc/ssl/private/selfsigned.pem') }
   notifies :run, 'execute[combine selfsigned certs]', :immediately
 end
@@ -92,6 +94,7 @@ haproxy_service 'haproxy' do
 end
 
 certbot 'test.local' do
+  domains ['test.local', 'secondary-test.local']
   email 'uaf-acep-ci@alaska.edu'
   acme_endpoint 'https://127.0.0.1:14000/dir'
   http_01_port 5002

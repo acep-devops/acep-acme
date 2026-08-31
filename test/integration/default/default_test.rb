@@ -14,3 +14,9 @@ end
 describe port(80) do
   it { should be_listening }
 end
+
+describe x509_certificate('/etc/ssl/private/test.local.pem') do
+  it { should be_valid }
+  its('subject_alt_names') { should include 'DNS:test.local' }
+  its('subject_alt_names') { should include 'DNS:secondary-test.local' }
+end
